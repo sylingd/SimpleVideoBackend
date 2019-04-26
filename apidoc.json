@@ -1,0 +1,13 @@
+{
+	"name": "SimpleVideo",
+	"version": "1.0.0",
+	"description": "API documention for SimpleVideo",
+	"title": "SimpleVideo API Docs",
+	"url": "http://video.sy/api",
+	"sampleUrl": "http://video.sy/api",
+	"template": {
+		"withCompare": false,
+		"withGenerator": true,
+		"forceLanguage": "zh_cn"
+	}
+}

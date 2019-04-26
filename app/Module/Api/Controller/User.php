@@ -71,7 +71,7 @@ class User extends ControllerAbstract {
 	/**
 	 * 注册新用户
 	 * 
-	 * @api {post} /api/user/register 注册新用户
+	 * @api {post} /user/register 注册新用户
 	 * @apiName UserRegister
 	 * @apiGroup User
 	 * 
@@ -80,7 +80,8 @@ class User extends ControllerAbstract {
 	 * @apiParam {String} password 密码
 	 * @apiParam {String} nickname 昵称
 	 * 
-	 * @apiSuccess {Int} id 用户ID
+	 * @apiSuccess {Object} data 信息
+	 * @apiSuccess {Int} data.id 用户ID
 	 */
 	public function registerAction(Request $request) {
 		if (!preg_match('/^(\w{1,20})$/', $request->post['name'])) {

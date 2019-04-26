@@ -24,7 +24,7 @@ class Token {
 	public function create($id) {
 		$token = bin2hex(random_bytes(10));
 		$this->token->add([
-			'uid' => $id,
+			'user' => $id,
 			'token' => $token,
 			'create_time' => date('Y-m-d H:i:s')
 		]);
@@ -32,7 +32,7 @@ class Token {
 	}
 
 	public function validate($token) {
-		$res = $this->get(['token' => $token], ['id']);
-		return $res === null ? null : $this->user->get($res['id']);
+		$res = $this->get(['token' => $token], ['user']);
+		return $res === null ? null : $this->user->get($res['user']);
 	}
 }
