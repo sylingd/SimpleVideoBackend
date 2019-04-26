@@ -48,7 +48,7 @@ class Video extends ControllerAbstract {
 	/**
 	 * 获取某一用户上传的视频列表
 	 * 
-	 * @api {get} /video/user/:id 获取某一分类下的视频列表
+	 * @api {get} /video/user/:id 获取某一用户上传的视频列表
 	 * @apiName GetVideoUser
 	 * @apiGroup Video
 	 * 
@@ -72,8 +72,8 @@ class Video extends ControllerAbstract {
 	/**
 	 * 获取视频详情
 	 * 
-	 * @api {get} /video/user/:id 获取视频详情
-	 * @apiName GetVideoUser
+	 * @api {get} /video/get/:id 获取视频详情
+	 * @apiName GetVideo
 	 * @apiGroup Video
 	 * 
 	 * @apiParam {Int} id 用户ID
