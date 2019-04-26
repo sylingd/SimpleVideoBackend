@@ -14,7 +14,7 @@ use Sy\Http\Router;
 use Psr\SimpleCache\CacheInterface;
 
 class Configutation {
-	const ROUTE_VER = 1;
+	const ROUTE_VER = 2;
 	public function setRouter(CacheInterface $cache) {
 		if ($cache->has('routes') && $cache->get('routes_ver') == ROUTE_VER) {
 			Router::from($cache->get('routes'));
@@ -30,6 +30,7 @@ class Configutation {
 		Router::get('/api/video/get/{id}', 'api.video.get', [
 			'id' => '(\d+)'
 		]);
+		Router::get('/api/user/me', 'api.user.me');
 		Router::post('/api/user/login', 'api.user.login');
 		Router::post('/api/user/register', 'api.user.register');
 		$cache->set('routes', Router::dump());

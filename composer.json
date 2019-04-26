@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "respect/validation": "^1.1",
         "sylingd/syframework": "^2.0@RC"
     },
     "config": {

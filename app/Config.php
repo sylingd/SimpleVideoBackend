@@ -16,7 +16,7 @@ $cfg = [
 		'port' => 3306,
 		'user' => 'root',
 		'password' => 'root',
-		'database' => 'test'
+		'database' => 'video'
 	],
 	'modules' => ['Api'],
 	'module' => 'Api',
