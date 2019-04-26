@@ -81,6 +81,7 @@ CREATE TABLE `video_comment`  (
   `id` int(10) UNSIGNED ZEROFILL NOT NULL,
   `video` int(11) UNSIGNED NULL DEFAULT NULL,
   `user` int(11) UNSIGNED NULL DEFAULT NULL,
+  `zan` int(11) UNSIGNED NULL DEFAULT NULL,
   `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `create_time` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
