@@ -30,14 +30,13 @@ class User extends ControllerAbstract {
 		$token = Cookie::get('token');
 		$user = $this->token->validate($token);
 		if ($user === null) {
-			echo Utils::getResult([
+			return Utils::getResult([
 				'errno' => '101',
 				'error' => '未登录'
 			]);
-			return;
 		}
 		unset($user['password']);
-		echo Utils::getResult([
+		return Utils::getResult([
 			'user' => $user
 		]);
 	}
@@ -45,18 +44,16 @@ class User extends ControllerAbstract {
 	public function loginAction(Request $request) {
 		$user = $this->user->get(['name' => $request->post['name']]);
 		if ($user === null) {
-			echo Utils::getResult([
+			return Utils::getResult([
 				'errno' => '101',
 				'error' => '用户不存在'
 			]);
-			return;
 		}
 		if (!password_verify($request->post['password'], $user['password'])) {
-			echo Utils::getResult([
+			return Utils::getResult([
 				'errno' => '102',
 				'error' => '用户名或密码错误'
 			]);
-			return;
 		}
 		$token = $this->token->create($user['id']);
 		Cookie::set([
@@ -66,38 +63,49 @@ class User extends ControllerAbstract {
 			'expire' => 7 * 24 * 3600
 		]);
 		unset($user['password']);
-		echo Utils::getResult([
+		return Utils::getResult([
 			'token' => $token,
 			'user' => $user
 		]);
 	}
+	/**
+	 * 注册新用户
+	 * 
+	 * @api {post} /api/user/register 注册新用户
+	 * @apiName UserRegister
+	 * @apiGroup User
+	 * 
+	 * @apiParam {String} name 用户名
+	 * @apiParam {String} email EMail
+	 * @apiParam {String} password 密码
+	 * @apiParam {String} nickname 昵称
+	 * 
+	 * @apiSuccess {Int} id 用户ID
+	 */
 	public function registerAction(Request $request) {
 		if (!preg_match('/^(\w{1,20})$/', $request->post['name'])) {
-			echo Utils::getResult([
+			return Utils::getResult([
 				'errno' => '101',
 				'error' => '用户名不合法'
 			]);
-			return;
 		}
 		if (!Validator::email()->validate($request->post['email'])) {
-			echo Utils::getResult([
+			return Utils::getResult([
 				'errno' => '102',
 				'error' => '邮箱不合法'
 			]);
-			return;
 		}
 		$request->post['password'] = password_hash($request->post['password'], PASSWORD_DEFAULT);
 		// ok
 		try {
 			$result = $this->user->add($request->post, ['name', 'password', 'email', 'nickname']);
 		} catch (\Throwable $e) {
-			echo Utils::getResult([
+			return Utils::getResult([
 				'errno' => '103',
 				'error' => '注册失败'
 			]);
-			return;
 		}
-		echo Utils::getResult([
+		return Utils::getResult([
 			'id' => $result
 		]);
 	}

@@ -1,0 +1,18 @@
+sudo: true
+language: php
+dist: trusty
+php:
+  - '7.0'
+
+notifications:
+  email: false
+
+before_install:
+  - mkdir build
+
+script:
+  - bash ci/deploy-www.sh
+
+env:
+  global:
+    - secure: "DpPuDiMgoYWRZE78l9N09RDL1wDEe4MicgIx5GqKHqzJF0T91GOwg+Xg2wLK5FGS+5f92RNC7wfVPay90xswgMZQONtRaDn+FOwtv74zCkYYDutfhhJ5fSC4sHSKYvYTgdZVkDz4+OK/wvfijjIhLTMYqV6QOZRVe0/PRhnnoHzYz1asuh2wtStJC734C8V0tNGHeW0hoTf7Tsg1wevC1H//5nonxpg2PBUmbYZ6Jimb6YhrzDN+j+KjkJsEvdv6I4mOGYe1JCjChmeJlWe5v4IxnXregGxAUtg/dCQdYQCy00e9kORHAlDFmjj2vAwTH5nERcf1H0NNaN0QjB6R6eqYrgtWK6dpqU11MGRYCepbwrPkmR+bwH/+m7JQwPDXmRlB82ie6PS6wJvubf1wC31tfaTL4aj+TE2jp+j1DUnynOPitEflrOctFVmeOyfQkLl2rnwwAGbTd1/MtrNvqcquvZxzapH1xkKSErm1pemZI70XSC3O+zBlDse93rqzcXT8h582n/ieAfUphaBGvwOfQmnKT5aIZmj1qS83vPWyZx9Pi3UhNLk8ArHMLqXdSLM/QltQPKw4o1prLRp47I3Db1T6M1ciFCd81vwwAg9F2M0lzQKMi/e+SYejjwzQmmr8f8056wm8vMrj5wWWxchBUM+VLUmC+UgdjauGOgE="
