@@ -1,0 +1,27 @@
+{
+    "name": "sylingd/simple-video-website",
+    "description": "A simple video website",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ShuangYa",
+            "email": "i@sylingd.com"
+        }
+    ],
+    "require": {
+        "sylingd/syframework": "^2.0@RC"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
