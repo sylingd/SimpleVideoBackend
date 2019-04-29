@@ -45,6 +45,7 @@ class Video extends ControllerAbstract {
 			'category' => $request->param['id']
 		]));
 	}
+
 	/**
 	 * 获取某一用户上传的视频列表
 	 * 
@@ -69,6 +70,7 @@ class Video extends ControllerAbstract {
 			'user' => $request->param['id']
 		]));
 	}
+
 	/**
 	 * 获取视频详情
 	 * 
@@ -100,7 +102,7 @@ class Video extends ControllerAbstract {
 		$id = $request->param['id'];
 		return Utils::getResult([
 			'video' => $this->video->get($id),
-			'comment' => $this->video->getComment($id)
+			'comment' => $this->video->getComment($id, true)
 		]);
 	}
 }
