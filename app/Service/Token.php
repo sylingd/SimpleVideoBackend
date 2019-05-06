@@ -35,4 +35,8 @@ class Token {
 		$res = $this->get(['token' => $token], ['user']);
 		return $res === null ? null : $this->user->get($res['user']);
 	}
+
+	public function get($filter, $field = null) {
+		return $this->token->get($filter, $field);
+	}
 }

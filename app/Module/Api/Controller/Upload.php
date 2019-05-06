@@ -34,7 +34,7 @@ class Upload extends ControllerAbstract {
 	 */
 	public function imageAction(Request $request) {
 		$file = $request->files['file'];
-		if ($file['error'] == UPLOAD_ERR_OK) {
+		if ($file['error'] === UPLOAD_ERR_OK) {
 			if ($file['size'] > 1024 * 1024) {
 				return Utils::getResult([
 					'errno' => '101',
@@ -60,7 +60,9 @@ class Upload extends ControllerAbstract {
 			}
 			$filename = md5_file($file['tmp_name']) . '.' . $ext;
 			move_uploaded_file($file['tmp_name'], PUBLIC_PATH . $path . '/' . $filename);
-			return Utils::getResult('/' . $path . '/' . $filename);
+			return Utils::getResult([
+				'url' => '/' . $path . '/' . $filename
+			]);
 		}
 		return Utils::getResult([
 			'errno' => '104',
