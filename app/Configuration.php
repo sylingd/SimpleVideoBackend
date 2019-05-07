@@ -13,10 +13,10 @@ namespace App;
 use Sy\Http\Router;
 use Psr\SimpleCache\CacheInterface;
 
-class Configutation {
-	const ROUTE_VER = 3;
+class Configuration {
+	const ROUTE_VER = 5;
 	public function setRouter(CacheInterface $cache) {
-		if ($cache->has('routes') && $cache->get('routes_ver') == ROUTE_VER) {
+		if ($cache->has('routes') && $cache->get('routes_ver') == self::ROUTE_VER) {
 			Router::from($cache->get('routes'));
 			return;
 		}
@@ -34,7 +34,8 @@ class Configutation {
 		Router::post('/api/user/login', 'api.user.login');
 		Router::post('/api/user/register', 'api.user.register');
 		Router::post('/api/upload/image', 'api.upload.image');
+		Router::get('/api/admin/user/list', 'admin.user.list');
 		$cache->set('routes', Router::dump());
-		$cache->set('routes_ver', ROUTE_VER);
+		$cache->set('routes_ver', self::ROUTE_VER);
 	}
 }

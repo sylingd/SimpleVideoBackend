@@ -26,7 +26,7 @@ class Token {
 		$this->token->add([
 			'user' => $id,
 			'token' => $token,
-			'create_time' => date('Y-m-d H:i:s')
+			'create_time' => time()
 		]);
 		return $token;
 	}

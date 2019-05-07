@@ -18,7 +18,7 @@ $cfg = [
 		'password' => 'root',
 		'database' => 'video'
 	],
-	'modules' => ['Api'],
+	'modules' => ['Api', 'Admin'],
 	'module' => 'Api',
 	'charset' => 'UTF-8'
 ];
