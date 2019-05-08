@@ -14,7 +14,7 @@ use Sy\Http\Router;
 use Psr\SimpleCache\CacheInterface;
 
 class Configuration {
-	const ROUTE_VER = 5;
+	const ROUTE_VER = 2;
 	public function setRouter(CacheInterface $cache) {
 		if ($cache->has('routes') && $cache->get('routes_ver') == self::ROUTE_VER) {
 			Router::from($cache->get('routes'));
@@ -35,6 +35,7 @@ class Configuration {
 		Router::post('/api/user/register', 'api.user.register');
 		Router::post('/api/upload/image', 'api.upload.image');
 		Router::get('/api/admin/user/list', 'admin.user.list');
+		Router::post('/api/admin/user/save', 'admin.user.save');
 		$cache->set('routes', Router::dump());
 		$cache->set('routes_ver', self::ROUTE_VER);
 	}

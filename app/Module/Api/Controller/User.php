@@ -76,6 +76,7 @@ class User extends ControllerAbstract {
 	 * @apiGroup User
 	 * 
 	 * @apiParam {String} name 用户名
+	 * @apiParam {String} avatar 头像
 	 * @apiParam {String} email EMail
 	 * @apiParam {String} password 密码
 	 * @apiParam {String} nickname 昵称
@@ -99,7 +100,7 @@ class User extends ControllerAbstract {
 		$request->post['password'] = password_hash($request->post['password'], PASSWORD_DEFAULT);
 		// ok
 		try {
-			$result = $this->user->add($request->post, ['name', 'password', 'email', 'nickname']);
+			$result = $this->user->add($request->post, ['name', 'password', 'email', 'nickname', 'avatar']);
 		} catch (\Throwable $e) {
 			return Utils::getResult([
 				'errno' => '103',
