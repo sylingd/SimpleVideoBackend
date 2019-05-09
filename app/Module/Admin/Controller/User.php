@@ -52,9 +52,10 @@ class User extends ControllerAbstract {
 	}
 
 	public function delAction(Request $request) {
-		$res = $this->user->del(intval($request->post['id']));
+		$res = $this->user->del(intval($request->get['id']));
 		// if ($res > 0) {
 			return Utils::getResult([
+				'id' => $request->get['id'],
 				'row' => $res
 			]);
 		// } else {

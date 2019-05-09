@@ -41,9 +41,15 @@ class Video extends ControllerAbstract {
 	 * @apiSuccess {String} data.create_time 上传时间
 	 */
 	public function listAction(Request $request) {
-		return Utils::getResult($this->video->list([
+		$filter = isset($request->param['id']) ? [
 			'category' => $request->param['id']
-		]));
+		] : [];
+		$page = intval($request->get['page']) - 1;
+		$page < 0 && $page = 0;
+		return Utils::getResult([
+			'size' => 30,
+			'list' => $this->video->list($filter, 30, $page)
+		]);
 	}
 
 	/**

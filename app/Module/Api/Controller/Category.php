@@ -22,6 +22,8 @@ class Category extends ControllerAbstract {
 	}
 
 	public function listAction(Request $request) {
-		return Utils::getResult($this->category->list());
+		return Utils::getResult([
+			'list' => $this->category->list()
+		]);
 	}
 }
