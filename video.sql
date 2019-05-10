@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 26/04/2019 16:21:55
+ Date: 10/05/2019 08:59:25
 */
 
 SET NAMES utf8mb4;
@@ -47,7 +47,8 @@ CREATE TABLE `token`  (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `is_admin` tinyint(1) UNSIGNED NULL DEFAULT 0,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -81,7 +82,6 @@ CREATE TABLE `video_comment`  (
   `id` int(10) UNSIGNED ZEROFILL NOT NULL,
   `video` int(11) UNSIGNED NULL DEFAULT NULL,
   `user` int(11) UNSIGNED NULL DEFAULT NULL,
-  `zan` int(11) UNSIGNED NULL DEFAULT NULL,
   `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `create_time` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
