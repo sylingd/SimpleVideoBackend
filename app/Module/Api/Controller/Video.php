@@ -111,4 +111,20 @@ class Video extends ControllerAbstract {
 			'comment' => $this->video->getComment($id, true)
 		]);
 	}
+
+	public function submitAction(Request $request) {
+		if (!$request->user) {
+			return Utils::getResult([
+				'errno' => 403,
+				'error' => '您必须先登录，才能提交视频'
+			]);
+		}
+		$id = $this->video->save(array_merge($request->post, [
+			'user' => $request->user['id'],
+			'create_time' => date('Y-m-d H:i:s')
+		]), ['category', 'user', 'name', 'image', 'aid', 'create_time']);
+		return Utils::getResult([
+			'id' => $id
+		]);
+	}
 }

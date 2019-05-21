@@ -24,6 +24,10 @@ class Video {
 		$this->user = $user;
 	}
 
+	public function save($data, $filter) {
+		return $this->video->add($data, $filter);
+	}
+
 	public function get($id) {
 		return $this->video->get($id);
 	}
