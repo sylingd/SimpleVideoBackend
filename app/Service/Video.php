@@ -25,11 +25,19 @@ class Video {
 	}
 
 	public function save($data, $filter) {
-		return $this->video->add($data, $filter);
+		if (isset($data['id']) && $data['id'] != -1) {
+			return $this->video->set($data, $filter, $data['id']);
+		} else {
+			return $this->video->add($data, $filter);
+		}
 	}
 
 	public function get($id) {
 		return $this->video->get($id);
+	}
+
+	public function del($id) {
+		return $this->video->del($id);
 	}
 
 	public function list($filter) {
@@ -49,6 +57,10 @@ class Video {
 			}
 		}
 		return $res;
+	}
+
+	public function getModel() {
+		return $this->video;
 	}
 
 }

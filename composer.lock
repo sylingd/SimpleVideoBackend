@@ -237,16 +237,16 @@
         },
         {
             "name": "sylingd/syframework",
-            "version": "2.0.0-rc8",
+            "version": "2.0.0-rc9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sylingd/SYFramework.git",
-                "reference": "812130e1c652e5b65a09c309cc7e45d18ffef2cb"
+                "reference": "f0388d945e4e9762b044c53585bcf309c16a89ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sylingd/SYFramework/zipball/812130e1c652e5b65a09c309cc7e45d18ffef2cb",
-                "reference": "812130e1c652e5b65a09c309cc7e45d18ffef2cb",
+                "url": "https://api.github.com/repos/sylingd/SYFramework/zipball/f0388d945e4e9762b044c53585bcf309c16a89ce",
+                "reference": "f0388d945e4e9762b044c53585bcf309c16a89ce",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -279,7 +279,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2019-05-21T08:09:44+00:00"
+            "time": "2019-05-24T01:57:10+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",

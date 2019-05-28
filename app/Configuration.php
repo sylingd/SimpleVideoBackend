@@ -20,10 +20,10 @@ class Configuration {
 		$user->register();
 	}
 	public function setRouter(CacheInterface $cache) {
-		if ($cache->has('routes') && $cache->get('routes_ver') == self::ROUTE_VER) {
-			Router::from($cache->get('routes'));
-			return;
-		}
+		// if ($cache->has('routes') && $cache->get('routes_ver') == self::ROUTE_VER) {
+		// 	Router::from($cache->get('routes'));
+		// 	return;
+		// }
 		Router::get('/api/category', 'api.category.list');
 		Router::get('/api/video/all', 'api.video.list');
 		Router::get('/api/video/list/{id}', 'api.video.list', [
@@ -44,8 +44,10 @@ class Configuration {
 		Router::get('/api/admin/user/list', 'admin.user.list');
 		Router::post('/api/admin/user/save', 'admin.user.save');
 		Router::get('/api/admin/user/del', 'admin.user.del');
+		Router::get('/api/admin/video/del', 'admin.video.del');
+		Router::post('/api/admin/video/save', 'admin.video.save');
 		Router::post('/api/admin/category', 'admin.category.save');
-		$cache->set('routes', Router::dump());
-		$cache->set('routes_ver', self::ROUTE_VER);
+		// $cache->set('routes', Router::dump());
+		// $cache->set('routes_ver', self::ROUTE_VER);
 	}
 }

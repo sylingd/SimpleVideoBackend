@@ -14,6 +14,7 @@ use Sy\ControllerAbstract;
 use Sy\Http\Request;
 use App\Library\Utils;
 use App\Service\Video as VideoService;
+use Latitude\QueryBuilder\Expression;
 
 class Video extends ControllerAbstract {
 	private $video;
@@ -41,14 +42,17 @@ class Video extends ControllerAbstract {
 	 * @apiSuccess {String} data.create_time 上传时间
 	 */
 	public function listAction(Request $request) {
-		$filter = isset($request->param['id']) ? [
-			'category' => $request->param['id']
-		] : [];
 		$page = intval($request->get['page']) - 1;
 		$page < 0 && $page = 0;
+		$total = $this->video->getModel()->get(isset($request->param['id']) ? [
+			'category' => $request->param['id']
+		] : null, [Expression::make('COUNT(*) AS n')]);
 		return Utils::getResult([
 			'size' => 30,
-			'list' => $this->video->list($filter, 30, $page)
+			'total' => 0,
+			'list' => $this->video->list(isset($request->param['id']) ? [
+				'category' => $request->param['id']
+			] : [], 30, $page)
 		]);
 	}
 
